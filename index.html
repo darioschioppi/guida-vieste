@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vieste — Guida Autentica • 20–27 Giugno 2026</title>
+  <style>
+    :root {
+      --sea: #0a7ea4;
+      --sea-light: #3ab4d8;
+      --sand: #f5e9c8;
+      --sand-dark: #e8d5a0;
+      --rock: #2c2c2c;
+      --rock-mid: #3e3e3e;
+      --white: #fafafa;
+      --accent: #e07b39;
+      --green: #4a7c59;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #1a1a1a;
+      color: #eee;
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: linear-gradient(160deg, #0a4f6e 0%, #0a7ea4 40%, #1a9cc7 70%, #2eb8e0 100%);
+      padding: 80px 20px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 60px;
+      background: #1a1a1a;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d0f0ff;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: #ffe082; }
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 1.1rem;
+      color: #c8eaf8;
+      font-style: italic;
+    }
+    .hero-dates {
+      margin-top: 24px;
+      display: inline-flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-dates .pill {
+      background: rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    /* RESIDENCE CARD */
+    .residence-card {
+      max-width: 700px;
+      margin: 40px auto 10px;
+      background: linear-gradient(135deg, #1e3a2f, #2a5040);
+      border: 1px solid #3a6050;
+      border-radius: 16px;
+      padding: 26px 30px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .residence-icon { font-size: 2.5rem; flex-shrink: 0; }
+    .residence-card h3 { color: #7ed4a8; font-size: 1.1rem; margin-bottom: 6px; }
+    .residence-card p { font-size: 0.9rem; color: #b0cfbe; }
+    .residence-card strong { color: #afe8c5; }
+
+    /* SECTION */
+    section {
+      max-width: 760px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sea-light);
+      margin-bottom: 8px;
+    }
+    section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: #fff;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    /* DAY CARDS */
+    .day-card {
+      background: #242424;
+      border-radius: 16px;
+      border: 1px solid #333;
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .day-card:hover { transform: translateY(-2px); }
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: #2c2c2c;
+      cursor: pointer;
+    }
+    .day-num {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .day-info h3 { font-size: 1rem; color: #fff; }
+    .day-info .day-date { font-size: 0.82rem; color: #888; margin-top: 2px; }
+    .day-tag {
+      margin-left: auto;
+      background: rgba(58, 180, 216, 0.15);
+      border: 1px solid rgba(58,180,216,0.3);
+      color: var(--sea-light);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .day-body {
+      padding: 20px 22px;
+      border-top: 1px solid #333;
+    }
+    .day-body ul { list-style: none; }
+    .day-body ul li {
+      padding: 7px 0 7px 24px;
+      position: relative;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .day-body ul li:last-child { border-bottom: none; }
+    .day-body ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .day-body ul li strong { color: #fff; }
+    .day-body ul li em { color: #aaa; font-style: italic; font-size: 0.87rem; }
+    .insider-tip {
+      margin-top: 16px;
+      background: rgba(74, 124, 89, 0.2);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #a8d4b4;
+    }
+    .insider-tip::before { content: '🌿 Dritta locale: '; font-weight: bold; color: #7ed4a8; }
+
+    /* HIDDEN GEMS */
+    .gems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .gem-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .gem-card:hover { border-color: var(--sea-light); }
+    .gem-icon { font-size: 2rem; margin-bottom: 10px; }
+    .gem-card h4 { font-size: 0.95rem; color: #fff; margin-bottom: 6px; }
+    .gem-card p { font-size: 0.83rem; color: #999; line-height: 1.5; }
+    .gem-card .gem-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: var(--sea-light);
+      border: 1px solid rgba(58,180,216,0.3);
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
+
+    /* FOOD */
+    .food-list { display: flex; flex-direction: column; gap: 12px; }
+    .food-item {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .food-emoji { font-size: 1.6rem; flex-shrink: 0; }
+    .food-item h4 { font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+    .food-item p { font-size: 0.85rem; color: #999; }
+    .food-item .avoid { font-size: 0.8rem; color: #c0826a; margin-top: 4px; }
+
+    /* BEACHES */
+    .beach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .beach-card {
+      background: linear-gradient(160deg, #0d3a52, #0a2d40);
+      border: 1px solid #1a5070;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .beach-card h4 { color: #7ed4e8; font-size: 0.9rem; margin-bottom: 6px; }
+    .beach-card p { font-size: 0.82rem; color: #8ab8c8; }
+    .crowd-meter {
+      margin-top: 10px;
+      display: flex;
+      gap: 4px;
+    }
+    .crowd-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #2a5a6a;
+    }
+    .crowd-dot.fill { background: var(--accent); }
+    .crowd-label { font-size: 0.75rem; color: #668; margin-left: 6px; }
+
+    /* TIPS */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .tip-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .tip-card .tip-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .tip-card h4 { font-size: 0.88rem; color: #ddd; margin-bottom: 5px; }
+    .tip-card p { font-size: 0.82rem; color: #888; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #555;
+      font-size: 0.82rem;
+      border-top: 1px solid #2a2a2a;
+      margin-top: 60px;
+    }
+    footer span { color: var(--sea-light); }
+
+    @media (max-width: 600px) {
+      .residence-card { flex-direction: column; }
+      .day-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Guida Autentica ✦</div>
+  <h1>Vieste <span>&</span> Gargano</h1>
+  <p class="hero-sub">Per chi vuole i posti veri, non quelli da cartolina</p>
+  <div class="hero-dates">
+    <span class="pill">📅 20 – 27 Giugno 2026</span>
+    <span class="pill">🏡 Residence Costamartino</span>
+    <span class="pill">🌊 7 notti</span>
+  </div>
+</div>
+
+<!-- RESIDENCE -->
+<div style="max-width:760px;margin:0 auto;padding:0 20px;">
+  <div class="residence-card">
+    <div class="residence-icon">🏡</div>
+    <div>
+      <h3>La tua base: Residence Costamartino</h3>
+      <p>Su una collina a <strong>1,6 km da Vieste</strong>, immerso negli ulivi con vista sul mare Adriatico. Lontano dal caos del centro, vicino alla natura. La spiaggia più vicina è <strong>San Lorenzo (2,1 km)</strong> — meno affollata della Scialara. Ottima partenza per esplorare il Gargano autentico.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ITINERARIO -->
+<section>
+  <div class="section-label">Giorno per giorno</div>
+  <h2>Itinerario 7 notti</h2>
+
+  <!-- GG1 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">1</div>
+      <div class="day-info">
+        <h3>Arrivo & orientamento lento</h3>
+        <div class="day-date">Venerdì 20 Giugno</div>
+      </div>
+      <div class="day-tag">🚗 Arrivo</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Check-in a Costamartino</strong> — goditi il tramonto dalla collina con vista sul mare e sulla Foresta Umbra, senza fare niente. <em>È uno dei panorami più belli della zona.</em></li>
+        <li><strong>Spiaggia di San Lorenzo</strong> (a 5 min in auto) — sabbia dorata, meno frequentata della Scialara. Primo tuffo.</li>
+        <li><strong>Cena a Vieste bassa</strong> — non nel centro storico affollato, ma nelle trattorie fuori dal flusso turistico lungo via Fazzini o corso Lorenzo Fazzini.</li>
+      </ul>
+      <div class="insider-tip">Al supermercato Conad o Penny Market vicino Vieste fai la spesa per colazioni e pranzi al sacco — risparmia e mangi meglio.</div>
+    </div>
+  </div>
+
+  <!-- GG2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">2</div>
+      <div class="day-info">
+        <h3>Spiagge selvagge a nord</h3>
+        <div class="day-date">Sabato 21 Giugno</div>
+      </div>
+      <div class="day-tag">🏖️ Mare</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Spiaggia di Sospetto</strong> — caletta quasi sconosciuta a nord di Vieste, accessibile via sterrato. Niente stabilimenti, solo rocce bianche e acqua turchese.</li>
+        <li><strong>Cala della Sanguinara</strong> — nome suggestivo, posto mozzafiato. Falesie bianche, acque verdi, frequentata solo dai locali. Porta pranzo al sacco.</li>
+        <li>Rientro nel pomeriggio, aperitivo sul terrazzo di Costamartino guardando il mare.</li>
+      </ul>
+      <div class="insider-tip">Queste spiagge non hanno servizi. Porta acqua, cibo, crema solare e scarpe da scoglio. Prima mattina per evitare anche i pochi presenti.</div>
+    </div>
+  </div>
+
+  <!-- GG3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">3</div>
+      <div class="day-info">
+        <h3>Vico del Gargano — il borgo vero</h3>
+        <div class="day-date">Domenica 22 Giugno</div>
+      </div>
+      <div class="day-tag">🏘️ Entroterra</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Vico del Gargano</strong> (~40 min da Vieste) — nell'elenco dei Borghi più belli d'Italia ma quasi ignorato dai turisti. Centro storico medievale autentico, non restaurato per i visitatori: semplicemente rimasto così.</li>
+        <li><strong>Il Vicolo del Bacio</strong> — il passaggio più stretto del borgo (50 cm), dove gli innamorati si sfiorano per forza. Non è un'attrazione turistica: è un vicolo antico che esiste da secoli.</li>
+        <li><strong>Paposcia vichese</strong> — focaccia gonfia tipica <i>solo</i> di Vico, farcita con salumi e formaggi locali. Non si trova altrove. Mangiala lì sul posto.</li>
+        <li>Visita al Castello normanno con panorama sull'intero Gargano.</li>
+      </ul>
+      <div class="insider-tip">Domenica mattina presto è perfetta: il mercatino locale vende prodotti agricoli della zona — miele, olio, funghi della Foresta Umbra, cacioricotta fresca.</div>
+    </div>
+  </div>
+
+  <!-- GG4 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">4</div>
+      <div class="day-info">
+        <h3>Foresta Umbra — i sentieri fuori mappa</h3>
+        <div class="day-date">Lunedì 23 Giugno</div>
+      </div>
+      <div class="day-tag">🌲 Natura</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Foresta Umbra</strong> (~40 min da Vieste) — non il sentiero principale con i turisti. Chiedi al centro visitatori i <strong>percorsi secondari</strong>: faggi, cerri e tassi millenari nell'ombra, in silenzio quasi totale.</li>
+        <li>Sentiero del <strong>Lago di Umbra</strong> (laghetto artificiale immerso nel bosco) — breve, suggestivo, praticamente vuoto.</li>
+        <li>Se ami il birdwatching: la foresta ospita il picchio nero e il falco pecchiaiolo — mattina presto è il momento migliore.</li>
+        <li>Pranzo al sacco in una radura — uno dei momenti più belli del viaggio.</li>
+        <li>Rientro via <strong>Monte Sant'Angelo</strong> (30 min deviazione) — santuario UNESCO scavato nella roccia, meno turistico di quanto si pensi fuori stagione.</li>
+      </ul>
+      <div class="insider-tip">Indossa scarpe da trekking e porta acqua abbondante. In giugno la foresta regala un'ombra magnifica — 5–8°C più fresca della costa.</div>
+    </div>
+  </div>
+
+  <!-- GG5 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">5</div>
+      <div class="day-info">
+        <h3>Spiaggia di Zaiana & mare libero</h3>
+        <div class="day-date">Martedì 24 Giugno</div>
+      </div>
+      <div class="day-tag">🌊 Spiaggia nascosta</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Spiaggia di Zaiana</strong> — una delle meno conosciute del Gargano, senza stabilimenti. Falesie bianche, acqua verde smeraldo, ciottoli bianchi. Raggiungerla richiede un breve cammino su sterrato: è il filtro naturale che la mantiene vuota.</li>
+        <li><strong>Snorkeling</strong> lungo la costa rocciosa — le acque poco profonde tra le falesie sono ricche di polpi, saraghi e ricci.</li>
+        <li>Pausa a <strong>Peschici</strong> al ritorno (~30 min) — aperitivo con vista sul golfo dalle terrazze del borgo medievale, lontano dai bar del lungomare.</li>
+      </ul>
+      <div class="insider-tip">A Peschici cerca la gelateria artigianale nel caruggio principale — fan locali da decenni, non ha insegna luminosa.</div>
+    </div>
+  </div>
+
+  <!-- GG6 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">6</div>
+      <div class="day-info">
+        <h3>Giro in barca privato & trabucchi</h3>
+        <div class="day-date">Mercoledì 25 Giugno</div>
+      </div>
+      <div class="day-tag">🚤 Mare</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Giro in barca</strong> — non i tour organizzati da 50 persone. Cerca i pescatori locali al porto di Vieste la mattina presto: molti affittano piccole barche a noleggio o fanno escursioni private su accordo. Grotte, archi, calette inaccessibili via terra.</li>
+        <li><strong>Arco di San Felice</strong> — monolite forato dal mare, uno dei simboli del Gargano. Vederlo dal mare è completamente diverso.</li>
+        <li><strong>I trabucchi</strong> — antiche macchine da pesca su palafitte a picco sul mare. Alcuni sono diventati ristoranti. Scegli quelli meno noti fuori Vieste per pranzare sul mare con pesce pescato quella mattina.</li>
+        <li>Pomeriggio: spiaggia libera di <strong>Punta Lunga</strong> (3,6 km da Costamartino) — sabbia fine, acque basse, famiglie locali.</li>
+      </ul>
+      <div class="insider-tip">Al porto di Vieste verso le 6–7 di mattina trovi i pescatori che rientrano. Spesso vendono pesce freschissimo direttamente dalla barca a prezzi locali.</div>
+    </div>
+  </div>
+
+  <!-- GG7 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">7</div>
+      <div class="day-info">
+        <h3>Giorno lento & centro storico autentico</h3>
+        <div class="day-date">Giovedì 26 Giugno</div>
+      </div>
+      <div class="day-tag">🏙️ Vieste</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li><strong>Centro storico di Vieste</strong> — non di giorno con le masse, ma all'alba (6:30–8:00). I vicoli bianchi in silenzio sono un'altra cosa. Poi colazione al bar dei locali, non sul lungomare.</li>
+        <li><strong>Chianca Amara</strong> — la pietra su cui nel 1554 i pirati turchi decapitarono 5.000 abitanti. È lì, in un vicolo, senza folla e senza biglietto. Un pezzo di storia reale.</li>
+        <li><strong>Cattedrale di Vieste</strong> — sec. XI, ingresso libero, quasi sempre vuota. Architettura romanica pugliese autentica.</li>
+        <li>Pomeriggio: ultimo mare alla <strong>Spiaggia dei Colombi</strong> (3,5 km da Costamartino) — tranquilla, poca sabbia, molto scoglio e acqua limpidissima.</li>
+        <li>Sera: <strong>cena d'addio</strong> da Osteria degli Archi o Antichi Sapori — prenota con anticipo.</li>
+      </ul>
+      <div class="insider-tip">Il mercato del pesce di Vieste è in via delle Marinerie — mattina presto, solo locali. Il polpo fresco qui costa la metà del ristorante.</div>
+    </div>
+  </div>
+
+  <!-- GG8 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">8</div>
+      <div class="day-info">
+        <h3>Partenza</h3>
+        <div class="day-date">Venerdì 27 Giugno</div>
+      </div>
+      <div class="day-tag">🚗 Rientro</div>
+    </div>
+    <div class="day-body">
+      <ul>
+        <li>Ultima colazione con vista mare da Costamartino.</li>
+        <li>Compra le scorte per casa: <strong>olio extravergine del Gargano</strong>, <strong>caciocavallo podolico</strong> e <strong>miele di sulla</strong> — dai produttori locali, non nei negozi per turisti.</li>
+        <li>Check-out e partenza.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SPIAGGE NASCOSTE -->
+<section>
+  <div class="section-label">Lontano dalla folla</div>
+  <h2>Spiagge meno conosciute</h2>
+  <div class="beach-grid">
+
+    <div class="beach-card">
+      <h4>Spiaggia di Sospetto</h4>
+      <p>Caletta semiselvatica a nord di Vieste. Sterrato, nessun servizio, acqua turchese. Quasi sconosciuta.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Poco frequentata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Cala della Sanguinara</h4>
+      <p>Falesie bianche, acque verde smeraldo. Solo locali. Porta pranzo al sacco.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Quasi vuota</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia di Zaiana</h4>
+      <p>Una delle più nascoste del Gargano. Ciottoli bianchi, nessuno stabilimento, breve cammino su sterrato.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Raramente affollata</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia di San Lorenzo</h4>
+      <p>A 2 km da Costamartino. Più tranquilla della Scialara, sabbia dorata, pochi stabilimenti.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Moderata in giugno</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Spiaggia dei Colombi</h4>
+      <p>A 3,5 km da Costamartino. Scoglio, acqua limpida, molto frequentata dai locali, non dai turisti.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Locale</span>
+      </div>
+    </div>
+
+    <div class="beach-card">
+      <h4>Punta Lunga</h4>
+      <p>A 3,6 km da Costamartino. Sabbia fine, mare basso, famiglie del posto.</p>
+      <div class="crowd-meter">
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot fill"></div>
+        <div class="crowd-dot"></div>
+        <div class="crowd-dot"></div>
+        <span class="crowd-label">Locale</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POSTI NASCOSTI -->
+<section>
+  <div class="section-label">Off the beaten path</div>
+  <h2>Posti che non trovi sulle brochure</h2>
+  <div class="gems-grid">
+
+    <div class="gem-card">
+      <div class="gem-icon">🏘️</div>
+      <h4>Vico del Gargano</h4>
+      <p>Borgo medievale nei "Borghi più belli d'Italia". Paposcia, castello normanno, vicoli autentici. I pugliesi lo conoscono, i turisti no.</p>
+      <span class="gem-tag">~40 min da Vieste</span>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🌲</div>
+      <h4>Foresta Umbra (sentieri)</h4>
+      <p>Non il percorso principale. I sentieri secondari sono quasi vuoti. Faggi centenari, silenzio, 8°C in meno rispetto alla costa.</p>
+      <span class="gem-tag">~40 min da Vieste</span>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">⛪</div>
+      <h4>Monte Sant'Angelo</h4>
+      <p>Santuario UNESCO scavato nella roccia. Luogo di pellegrinaggio millenario. Meno affollato fuori agosto.</p>
+      <span class="gem-tag">~50 min da Vieste</span>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🎣</div>
+      <h4>Porto di Vieste all'alba</h4>
+      <p>I pescatori rientrano alle 6–7. Si compra pesce fresco dalla barca. Atmosfera autentica, prezzi locali.</p>
+      <span class="gem-tag">Centro Vieste</span>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🪨</div>
+      <h4>Chianca Amara</h4>
+      <p>Pietra storica nel cuore del centro storico. Nessun biglietto, nessuna fila. Storia vera, non ricostruita.</p>
+      <span class="gem-tag">Centro storico</span>
+    </div>
+
+    <div class="gem-card">
+      <div class="gem-icon">🫒</div>
+      <h4>Masserie locali</h4>
+      <p>Lungo la strada per Peschici ci sono masserie che vendono olio, formaggio e vino direttamente. Niente etichette per turisti.</p>
+      <span class="gem-tag">SS89 verso Peschici</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CIBO AUTENTICO -->
+<section>
+  <div class="section-label">Mangiare come un locale</div>
+  <h2>Cucina autentica</h2>
+  <div class="food-list">
+
+    <div class="food-item">
+      <div class="food-emoji">🐙</div>
+      <div>
+        <h4>Polpo alla brace o in insalata</h4>
+        <p>Piatto base del Gargano. Al porto puoi comprarlo fresco la mattina dai pescatori. Nei trabucchi lo cucinano sul momento.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🍚</div>
+      <div>
+        <h4>Tiella di riso, patate e cozze</h4>
+        <p>Il piatto pugliese per eccellenza. In ogni trattoria locale, non nei ristoranti sul lungomare. Cotta in teglia di terracotta.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🫓</div>
+      <div>
+        <h4>Paposcia di Vico del Gargano</h4>
+        <p>Focaccia gonfia, morbida, farcita. Esiste <em>solo</em> a Vico del Gargano. Non si trova altrove in questa forma. Imperdibile.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🧀</div>
+      <div>
+        <h4>Caciocavallo podolico</h4>
+        <p>Il formaggio del Gargano, da latte di vacca podolica allevata allo stato brado. Comprarlo direttamente in masseria.</p>
+      </div>
+    </div>
+
+    <div class="food-item">
+      <div class="food-emoji">🐟</div>
+      <div>
+        <h4>Pesce al trabucco</h4>
+        <p>Mangia in uno dei trabucchi meno noti fuori Vieste — il pesce viene pescato quella stessa mattina con la struttura storica.</p>
+        <p class="avoid">⚠️ Evita i ristoranti con il menù fotografico e la scritta "Fish & Chips" sul lungomare.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONSIGLI PRATICI -->
+<section>
+  <div class="section-label">Logistica</div>
+  <h2>Consigli pratici</h2>
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <div class="tip-icon">🌡️</div>
+      <h4>Meteo giugno</h4>
+      <p>27–33°C, sole quasi garantito. Mare 23–25°C. Serate piacevoli, mai afosa come agosto.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🚗</div>
+      <h4>Auto indispensabile</h4>
+      <p>Da Costamartino non si raggiunge niente a piedi. L'auto è essenziale per le spiagge nascoste e l'entroterra.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">💧</div>
+      <h4>Acqua & spiagge libere</h4>
+      <p>Porta sempre 2L di acqua. Le spiagge nascoste non hanno bar. Borsa termica con pranzo al sacco.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🥾</div>
+      <h4>Cosa portare</h4>
+      <p>Scarpe da scoglio, maschera snorkeling, zaino leggero per la foresta, crema 50+, contanti (i locali non accettano carte).</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">⏰</div>
+      <h4>Orari strategici</h4>
+      <p>Spiagge all'alba o dopo le 17. Borghi la mattina presto. Evita 11–15 al sole diretto.</p>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">📵</div>
+      <h4>Connessione</h4>
+      <p>In Foresta Umbra e nelle calette nascoste il segnale è assente. Scarica mappe offline (Maps.me o Google Maps offline) prima di partire.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Guida creata per <span>Dario</span> · Residence Costamartino, Vieste (FG) · Giugno 2026</p>
+  <p style="margin-top:8px; color:#444;">Buon viaggio nel Gargano autentico 🌊</p>
+</footer>
+
+</body>
+</html>
