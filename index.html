@@ -99,6 +99,65 @@
     .residence-card h3 { color: #7ed4a8; font-size: 1.1rem; margin-bottom: 6px; }
     .residence-card p { font-size: 0.9rem; color: #b0cfbe; }
     .residence-card strong { color: #afe8c5; }
+    .residence-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .residence-meta a, .residence-meta span {
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 4px 12px;
+      color: #afe8c5;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .residence-meta a:hover { background: rgba(255,255,255,0.13); }
+
+    /* DIRECTIONS */
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+    .direction-card {
+      background: #242424;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .direction-card .from {
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .direction-card p {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.55;
+    }
+    .direction-card p strong { color: #ddd; }
+    .gps-box {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .gps-box .gps-icon { font-size: 1.4rem; }
+    .gps-box p { font-size: 0.87rem; color: #999; }
+    .gps-box strong { color: #7ed4a8; font-family: monospace; font-size: 0.95rem; }
+    .gps-box a { color: var(--sea-light); font-size: 0.82rem; text-decoration: none; }
 
     /* SECTION */
     section {
@@ -321,9 +380,61 @@
     <div>
       <h3>La tua base: Residence Costamartino</h3>
       <p>Su una collina a <strong>1,6 km da Vieste</strong>, immerso negli ulivi con vista sul mare Adriatico. Lontano dal caos del centro, vicino alla natura. La spiaggia più vicina è <strong>San Lorenzo (2,1 km)</strong> — meno affollata della Scialara. Ottima partenza per esplorare il Gargano autentico.</p>
+      <div class="residence-meta">
+        <span>📍 C.da Coppitella 34 — 71019 Vieste (FG)</span>
+        <a href="tel:+390884706078">📞 0884.706078</a>
+        <a href="tel:+393383352212">📱 338.3352212</a>
+        <a href="mailto:info@costamartino.it">✉️ info@costamartino.it</a>
+        <a href="https://www.costamartino.it" target="_blank">🌐 costamartino.it</a>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- COME ARRIVARE -->
+<section>
+  <div class="section-label">Logistica</div>
+  <h2>Come arrivare in auto</h2>
+
+  <div class="gps-box">
+    <div class="gps-icon">🛰️</div>
+    <div>
+      <p>Coordinate GPS del Residence Costamartino</p>
+      <strong>41.876780°N — 16.158556°E</strong><br/>
+      <a href="https://www.google.com/maps/search/41.876780,16.158556" target="_blank">→ Apri in Google Maps</a>
+    </div>
+  </div>
+
+  <div class="directions-grid">
+
+    <div class="direction-card">
+      <div class="from">🅰️ Da Bari</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Cerignola Est</strong>.<br/><br/>
+        Seguire le indicazioni per <strong>Manfredonia → Mattinata → Vieste</strong>.<br/><br/>
+        Una volta a Vieste, seguire il GPS per C.da Coppitella 34.
+      </p>
+    </div>
+
+    <div class="direction-card">
+      <div class="from">🅱️ Da Pescara</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Poggio Imperiale</strong>.<br/><br/>
+        Imboccare la <strong>SSV del Gargano</strong> e percorrerla fino all'ultima uscita.<br/><br/>
+        Seguire le indicazioni per <strong>Peschici</strong>, poi proseguire sulla <strong>SS-89</strong> Peschici–Vieste.
+      </p>
+    </div>
+
+    <div class="direction-card">
+      <div class="from">🅽 Da Napoli</div>
+      <p>
+        Autostrada <strong>A14</strong>, uscita <strong>Cerignola Est</strong>.<br/><br/>
+        Poi procedere come da Bari: indicazioni per <strong>Manfredonia → Mattinata → Vieste</strong>.
+      </p>
+    </div>
+
+  </div>
+</section>
 
 <!-- ITINERARIO -->
 <section>
